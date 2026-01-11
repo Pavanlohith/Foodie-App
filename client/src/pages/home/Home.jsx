@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import ExploreMenu from '../../components/ExploreMenu/ExploreMenu.jsx';
-import FoodDisplay from '../../components/Fooddisplay/FoodDisplay.jsx';
+
+import FoodDisplay from "../../components/FoodDisplay/FoodDisplay.jsx"
+
 import Header from '../../components/navbar/Header/Header.jsx';
 import AppDownload from '../../components/AppDownload/AppDownload.jsx';
 
