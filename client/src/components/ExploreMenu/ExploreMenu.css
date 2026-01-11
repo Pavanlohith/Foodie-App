@@ -1,0 +1,46 @@
+.explore-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.explore-menu-text {
+  max-width: 60%;
+  color: #808080;
+}
+
+.explore-menu-list {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.explore-menu-list::-webkit-scrollbar {
+  display: none;
+}
+
+.explore-menu-list-item {
+  text-align: center;
+  min-width: 120px;
+}
+
+.explore-menu-list-item img {
+  width: 7.5vw;
+  min-width: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.explore-menu-list-item p {
+  margin-top: 10px;
+  color: #747474;
+  font-size: max(1.2vw, 14px);
+}
+
+.explore-menu hr {
+  margin: 10px 0px;
+  height: 2px;
+  background-color: #e2e2e2;
+  border: none;
+}

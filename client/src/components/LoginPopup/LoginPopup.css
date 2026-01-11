@@ -1,0 +1,139 @@
+/* LoginPopup.css */
+
+.login-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-popup-container {
+  background-color: #fff;
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Title */
+.login-popup-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-popup-title h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.login-popup-title img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Inputs */
+.login-popp-input {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.login-popp-input input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.login-popp-input input:focus {
+  border-color: #ff6347; /* or primary theme color */
+}
+
+/* Submit Button */
+.login-popup-container button[type='submit'] {
+  padding: 0.75rem 1rem;
+  background-color: #ff6347;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 1rem;
+}
+
+.login-popup-container button[type='submit']:hover {
+  background-color: #e5533d;
+}
+
+/* Terms & Conditions */
+.logi-popup-condition {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.logi-popup-condition input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+}
+
+/* Toggle Login/Sign Up text */
+.login-popup-container p {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+.login-popup-container p span {
+  color: #ff6347;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login-popup-container {
+    padding: 1.5rem;
+  }
+
+  .login-popup-title h2 {
+    font-size: 1.25rem;
+  }
+
+  .login-popp-input input {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  .login-popup-container button[type='submit'] {
+    padding: 0.65rem;
+    font-size: 0.95rem;
+  }
+}

@@ -1,7 +1,6 @@
-# Environment files
+# Environment variables
 .env
 server/.env
 
-# Node dependencies
+# Node
 node_modules/
-server/node_modules/
