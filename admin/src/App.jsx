@@ -9,7 +9,7 @@ import Orders from './Pagess/Orders/Orders'
 
 
 const App = () => {
-  const url = "http://localhost:4000"
+  const url = "https://foodie-app-eight-tau.vercel.app/"
   return (
     <div>
       <NavBar/>
