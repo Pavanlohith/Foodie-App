@@ -8,16 +8,12 @@ import userRouter from './routes/useROute.js';
 import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
 
-// -------------------
-// App config
-// -------------------
 const app = express();
 const port = process.env.PORT || 4000;
 
 // -------------------
-// CORS config
+// Apply CORS before any route
 // -------------------
-// Allow only your Netlify frontend
 const allowedOrigin = "https://tangerine-kangaroo-e403f4.netlify.app";
 app.use(cors({
   origin: allowedOrigin,
@@ -26,45 +22,33 @@ app.use(cors({
   credentials: true
 }));
 
-// Preflight handler for OPTIONS requests
+// Preflight OPTIONS handler
 app.options("*", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, token");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Origin", allowedOrigin);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, token");
+  res.header("Access-Control-Allow-Credentials", "true");
   res.sendStatus(200);
 });
 
-// -------------------
-// Middleware
-// -------------------
-app.use(express.json()); // parse JSON body
+// Parse JSON body
+app.use(express.json());
 
 // Serve uploads
 app.use("/images", express.static("uploads"));
 app.use("/uploads", express.static("uploads"));
 
-// -------------------
 // Database connection
-// -------------------
 connectDB();
 
-// -------------------
 // API Routes
-// -------------------
 app.use("/api/food", foodRouter);
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
-// Root route
-app.get("/", (req, res) => {
-  res.send("API working");
-});
+// Root
+app.get("/", (req, res) => res.send("API working"));
 
-// -------------------
 // Start server
-// -------------------
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
+app.listen(port, () => console.log(`Server running on port ${port}`));
