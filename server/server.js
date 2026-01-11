@@ -8,6 +8,14 @@ import 'dotenv/config'
 import cartRouter from './routes/cartRoute.js'
 
 import orderRouter from './routes/orderRoute.js'
+// Allow frontend domain
+app.use(cors({
+  origin: ["https://tangerine-kangaroo-e403f4.netlify.app/"], // your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "token"], // include any custom headers
+  credentials: true // if you send cookies
+}));
+
 //app config
 
 const app=express()
