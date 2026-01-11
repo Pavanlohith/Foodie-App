@@ -15,29 +15,30 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // -------------------
-// Middleware
+// CORS config
 // -------------------
-
-// CORS config: allow only your Netlify frontend
+// Allow only your Netlify frontend
+const allowedOrigin = "https://tangerine-kangaroo-e403f4.netlify.app";
 app.use(cors({
-  origin: "https://tangerine-kangaroo-e403f4.netlify.app",
+  origin: allowedOrigin,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "token"],
   credentials: true
 }));
-// -------------------
-// CORS preflight handler (important!)
-// -------------------
+
+// Preflight handler for OPTIONS requests
 app.options("*", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://tangerine-kangaroo-e403f4.netlify.app");
+  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, token");
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.status(200).end();
+  res.sendStatus(200);
 });
 
-// Parse JSON body
-app.use(express.json());
+// -------------------
+// Middleware
+// -------------------
+app.use(express.json()); // parse JSON body
 
 // Serve uploads
 app.use("/images", express.static("uploads"));
