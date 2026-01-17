@@ -9,7 +9,7 @@ import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 app.use(
   cors({
     origin: "https://tangerine-kangaroo-e403f4.netlify.app",
