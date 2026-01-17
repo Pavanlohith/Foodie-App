@@ -10,26 +10,33 @@ import orderRouter from './routes/orderRoute.js';
 
 const app = express();
 const port = process.env.PORT || 4000;
-
+app.use(
+  cors({
+    origin: "https://tangerine-kangaroo-e403f4.netlify.app",
+    credentials: true,
+    // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    // allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 // -------------------
 // Apply CORS before any route
 // -------------------
-const allowedOrigin = "https://tangerine-kangaroo-e403f4.netlify.app";
-app.use(cors({
-  origin: allowedOrigin,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "token"],
-  credentials: true
-}));
+// const allowedOrigin = "https://tangerine-kangaroo-e403f4.netlify.app";
+// app.use(cors({
+//   origin: allowedOrigin,
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "token"],
+//   credentials: true
+// }));
 
-// Preflight OPTIONS handler
-app.options("*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", allowedOrigin);
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, token");
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.sendStatus(200);
-});
+// // Preflight OPTIONS handler
+// app.options("*", (req, res) => {
+//   res.header("Access-Control-Allow-Origin", allowedOrigin);
+//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//   res.header("Access-Control-Allow-Headers", "Content-Type, token");
+//   res.header("Access-Control-Allow-Credentials", "true");
+//   res.sendStatus(200);
+// });
 
 // Parse JSON body
 app.use(express.json());
