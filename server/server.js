@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import cookieParser from 'cookie-parser';
 
 import { connectDB } from './config/db.js';
 import foodRouter from './routes/foodRoute.js';
@@ -10,6 +11,8 @@ import orderRouter from './routes/orderRoute.js';
 
 const app = express();
 const port = process.env.PORT || 5000;
+connectDB();
+app.use(express.json());
 app.use(
   cors({
     origin: "https://tangerine-kangaroo-e403f4.netlify.app",
@@ -18,7 +21,35 @@ app.use(
     // allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-// -------------------
+
+
+
+// app.use(
+//   cors({
+//     origin: "https://userhub-pavanlohith.netlify.app",
+//     credentials: true,
+//   })
+// );
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       callback(null, true); // allow all origins
+//     },
+//     credentials: true,
+//   })
+// );
+
+app.use(cookieParser());
+
+// app.use(
+//   cors({
+//     origin: "https://tangerine-kangaroo-e403f4.netlify.app",
+//     credentials: true,
+//     // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     // allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// );
+// // -------------------
 // Apply CORS before any route
 // -------------------
 // const allowedOrigin = "https://tangerine-kangaroo-e403f4.netlify.app";
@@ -39,14 +70,14 @@ app.use(
 // });
 
 // Parse JSON body
-app.use(express.json());
+
 
 // Serve uploads
 app.use("/images", express.static("uploads"));
 app.use("/uploads", express.static("uploads"));
 
 // Database connection
-connectDB();
+
 
 // API Routes
 app.use("/api/food", foodRouter);
