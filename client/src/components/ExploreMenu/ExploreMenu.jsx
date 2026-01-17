@@ -8,7 +8,10 @@ const ExploreMenu = ({ url }) => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const res = await axios.get(`${url}/api/food/list`);
+        const res = await axios.get(`${url}/api/food/list`, {
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+        } );
         if (res.data.success) {
           setFoods(res.data.data);
         }

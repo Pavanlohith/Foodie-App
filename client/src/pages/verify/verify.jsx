@@ -24,7 +24,9 @@ const Verify = () => {
       try {
         const response = await axios.post(
           url + "/api/order/verify",
-          { success, orderId }
+
+          { success, orderId },
+          { headers: { "Content-Type": "application/json" }, credentials: "include" }
         )
 
         if (response.data.success) {

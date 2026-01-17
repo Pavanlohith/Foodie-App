@@ -18,7 +18,8 @@ const StoreContextProvider = ({ children }) => {
       const response = await axios.post(
         url + "/api/cart/get",
         {}, // userId comes from token
-        { headers: { token: userToken } }
+        { headers: { token: userToken, "Content-Type": "application/json" }, credentials: "include" }
+
       )
       if (response.data.success) {
         setCartItems(response.data.rawCart || {}) // update local cart state

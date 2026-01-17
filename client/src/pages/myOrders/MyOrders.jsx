@@ -13,7 +13,7 @@ const MyOrders = () => {
       const response = await axios.post(
         url + "/api/order/usersorders",
         {},
-        { headers: { token } }
+        { headers: { token, "Content-Type": "application/json" }, credentials: "include" }
       )
       setData(response.data.data || [])
     } catch (error) {
